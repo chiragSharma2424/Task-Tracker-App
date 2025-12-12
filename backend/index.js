@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import userRouter from './routes/user-routes.js'
 import connectsDB from './db/db.js'
+import taskRouter from './routes/task-routes.js'
 
 dotenv.config()
 const app = express()
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 // Routes
 app.use('/api/users', userRouter);
+app.use('/api/task', taskRouter);
 
 app.get('/', (req, res) => {
     res.status(200).json({
