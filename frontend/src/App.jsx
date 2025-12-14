@@ -1,9 +1,14 @@
-import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Signup from './components/Signup';
+import Signin from './components/Signin';
 
 function App() {
   return (
-    <div className='bg-red-500'>
-       hello
+    <div>
+       <Routes>
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/signin' element={<Signin />} />
+       </Routes>
     </div>
   )
 }
