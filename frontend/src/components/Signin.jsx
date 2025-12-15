@@ -45,11 +45,29 @@ export default function Signin() {
 
           <button
             type="submit"
+              onClick={() => {
+                fetch('http://localhost:4000/api/users/signin', {
+                  method: "POSt",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                    email: email,
+                    password: password
+                  })
+                }).then((resp) => {
+                  return resp.json();
+                }).then((data) => {
+                  console.log(data)
+                }).catch((err) => {
+                  console.log(`error in seding request ${err}`)
+                })
+              }}
             className="w-full bg-white text-gray-900 font-semibold py-3 rounded-lg hover:scale-[1.02] transform transition shadow-md">
             Sign In
           </button>
 
-          <div className="text-center text-gray-300 text-sm mt-3">
+          <div className="text-center text-gray-300 text-sm mt-3 cursor-pointer" >
             Don't have an account? <div onClick={() => {
               navigate('/signup');
             }}className="text-white font-medium underline">Sign up</div>

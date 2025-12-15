@@ -73,7 +73,7 @@ const signin = async (req, res) => {
             })
         }
 
-        const isPasswordValid = bcrypt.compare(password, isUserExists.password);
+        const isPasswordValid = await bcrypt.compare(password, isUserExists.password);
 
         if(!isPasswordValid) {
         return res.status(400).json({

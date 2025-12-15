@@ -64,13 +64,30 @@ export default function Signup() {
           <button
             type="submit"
             onClick={() => {
-              fetch('htpp://localhost:3000')
+              fetch('http://localhost:4000/api/users/signup', {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  name: name,
+                  email: email,
+                  password: password
+                })
+              }).then((resp) => {
+                return resp.json();
+              }).then((data) => {
+                console.log(data)
+                navigate('/task')
+              }).catch((err) => {
+                console.log(`error in sending request ${err}`);
+              })
             }}
             className="w-full inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold py-3 rounded-lg hover:scale-[1.02] transform transition shadow-sm">
             Sign Up
           </button>
 
-          <div className="text-center text-gray-500 text-sm mt-3">
+          <div className="text-center text-gray-500 text-sm mt-3 cursor-pointer">
             Already have an account? <div onClick={() => {
               navigate('/signin');
             }} className="text-gray-900 font-medium underline">Log in</div>
