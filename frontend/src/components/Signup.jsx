@@ -1,5 +1,6 @@
 import { useState } from "react";
 import  { useNavigate } from 'react-router-dom'
+import './task.css'
 
 export default function Signup() {
     const [name, setName] = useState('');
@@ -8,7 +9,7 @@ export default function Signup() {
     const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-400 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-400 pb-15">
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8 border border-gray-300">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-extrabold text-gray-900">Welcome to Task Tracker App</h1>

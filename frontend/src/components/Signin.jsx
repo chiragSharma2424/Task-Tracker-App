@@ -59,6 +59,7 @@ export default function Signin() {
                   return resp.json();
                 }).then((data) => {
                   console.log(data)
+                  navigate('/task')
                 }).catch((err) => {
                   console.log(`error in seding request ${err}`)
                 })
