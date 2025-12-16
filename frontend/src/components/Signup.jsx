@@ -1,6 +1,6 @@
 import { useState } from "react";
 import  { useNavigate } from 'react-router-dom'
-import './task.css'
+import './Task.css';
 
 export default function Signup() {
     const [name, setName] = useState('');
@@ -18,7 +18,7 @@ export default function Signup() {
 
         <div className="space-y-5">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name: </label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">Name: </label>
             <input
               id="name"
               name="name"
@@ -63,13 +63,10 @@ export default function Signup() {
           </div>
 
           <button
-            type="submit"
             onClick={() => {
               fetch('http://localhost:4000/api/users/signup', {
                 method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
+                credentials: "include",
                 body: JSON.stringify({
                   name: name,
                   email: email,
@@ -78,10 +75,9 @@ export default function Signup() {
               }).then((resp) => {
                 return resp.json();
               }).then((data) => {
-                console.log(data)
-                navigate('/task')
+                console.log(data);
               }).catch((err) => {
-                console.log(`error in sending request ${err}`);
+                console.log(`error in sending request ${err}`)
               })
             }}
             className="w-full inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold py-3 rounded-lg hover:scale-[1.02] transform transition shadow-sm">
@@ -91,7 +87,7 @@ export default function Signup() {
           <div className="text-center text-gray-500 text-sm mt-3 cursor-pointer">
             Already have an account? <div onClick={() => {
               navigate('/signin');
-            }} className="text-gray-900 font-medium underline">Log in</div>
+            }} className="text-gray-900 font-medium underline">Sign In</div>
           </div>
         </div>
       </div>

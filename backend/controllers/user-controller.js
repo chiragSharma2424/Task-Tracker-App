@@ -17,7 +17,7 @@ const signup = async (req, res) => {
         const userAlreadyExists = await userModel.findOne({ email });
         if(userAlreadyExists) {
             res.status(400).json({
-                msg: "user already exists"
+                msg: "Email already registered"
             })
         }
 
@@ -85,7 +85,12 @@ const signin = async (req, res) => {
             id: isUserExists._id
         }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.cookie('token', token);
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false,     
+            sameSite: "lax",
+            maxAge: 24 * 60 * 60 * 1000,
+        });
 
         res.status(200).json({
             msg: "user signin successfully",
@@ -100,6 +105,7 @@ const signin = async (req, res) => {
         console.log(`error in signin controller ${err}`)
     }
 }
+
 
 const logout = async (req, res) => {
     try {

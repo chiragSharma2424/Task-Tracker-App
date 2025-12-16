@@ -7,8 +7,8 @@ export default function Signin() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-6">
-      <div className="bg-gray-800/60 backdrop-blur-xl shadow-xl rounded-2xl w-full max-w-md p-8 border border-gray-700">
+    <div className="min-h-screen flex items-center justify-center bg-gray-400 p-6">
+      <div className="bg-gray-800/60 backdrop-blur-xl shadow-xl rounded-2xl w-full max-w-md p-8 border border-gray-400">
 
         <div className="text-center mb-6">
           <h1 className="text-3xl font-extrabold text-white">Welcome Back</h1>
@@ -18,7 +18,7 @@ export default function Signin() {
         <div className="space-y-5">
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">Email:</label>
             <input
               id="email"
                onChange={(e) => {
@@ -31,7 +31,7 @@ export default function Signin() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-1">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-1">Password:</label>
             <input
               id="password"
                onChange={(e) => {
