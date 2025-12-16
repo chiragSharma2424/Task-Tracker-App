@@ -9,20 +9,20 @@ const signup = async (req, res) => {
         const { name, email, password } = req.body;
 
         if(!name || !email || !password) {
-            res.json(404).json({
+           return res.json(404).json({
                 msg: "Please enter your credentials"
             })
         }
 
         const userAlreadyExists = await userModel.findOne({ email });
         if(userAlreadyExists) {
-            res.status(400).json({
+            return res.status(400).json({
                 msg: "Email already registered"
             })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        console.log(hashedPassword);
+    
 
         const newUser = await userModel.create({
             name: name,
@@ -34,9 +34,15 @@ const signup = async (req, res) => {
             id: newUser._id
         }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.cookie("token", token);
+        res.cookie("token", token, {
+              httpOnly: true,
+              secure: false,
+              sameSite: "lax",
+              maxAge: 24 * 60 * 60 * 1000,
+          });
 
-        res.status(201).json({
+
+        return res.status(201).json({
             msg: "user signup successfully",
             user: {
                 id: newUser._id,

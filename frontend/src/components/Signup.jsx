@@ -63,7 +63,7 @@ export default function Signup() {
           </div>
 
           <button
-            onClick={() => {
+            onClick={async () => {
               fetch('http://localhost:4000/api/users/signup', {
                 method: "POST",
                 credentials: "include",
@@ -73,11 +73,11 @@ export default function Signup() {
                   password: password
                 })
               }).then((resp) => {
-                return resp.json();
+                return resp.json()
               }).then((data) => {
-                console.log(data);
+                console.log(data)
               }).catch((err) => {
-                console.log(`error in sending request ${err}`)
+                console.log(`erro in sending request ${err}`);
               })
             }}
             className="w-full inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold py-3 rounded-lg hover:scale-[1.02] transform transition shadow-sm">
