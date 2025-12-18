@@ -61,13 +61,16 @@ export default function TaskTracker() {
                   headers: {
                     "Content-Type": "application/json",
                   },
-                  body: JSON.stringify({ title, description }),
-                })
-                  .then((resp) => resp.json())
-                  .then(() => {
-                    setTitle("");
-                    setDescription("");
-                    fetchTasks();
+                  body: JSON.stringify({ 
+                    title, 
+                    description
+                  }),
+                }).then((resp) => {
+                  return resp.json()
+                }).then(() => {
+                    setTitle("")
+                    setDescription("")
+                    fetchTasks()
                   });
               }}
               className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700"

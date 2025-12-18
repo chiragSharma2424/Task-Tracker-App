@@ -6,4 +6,4 @@ userRouter.post('/signup', signup);
 userRouter.post('/signin', signin);
 userRouter.get('/logout', logout);
 
-export default userRouter
+export default userRouter;

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import  { useNavigate } from 'react-router-dom'
 import './Task.css';
 
 export default function Signup() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const navigate = useNavigate();
 
   return (
@@ -62,10 +62,13 @@ export default function Signup() {
             />
           </div>
 
-          <button
+          <button 
             onClick={async () => {
               fetch('http://localhost:4000/api/users/signup', {
                 method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
                 credentials: "include",
                 body: JSON.stringify({
                   name: name,
@@ -77,7 +80,7 @@ export default function Signup() {
               }).then((data) => {
                 console.log(data)
               }).catch((err) => {
-                console.log(`erro in sending request ${err}`);
+                console.log(`error in sending request ${err}`);
               })
             }}
             className="w-full inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold py-3 rounded-lg hover:scale-[1.02] transform transition shadow-sm">
