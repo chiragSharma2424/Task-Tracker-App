@@ -44,10 +44,12 @@ export default function Signin() {
           </div>
 
           <button
-            type="submit"
               onClick={() => {
                 fetch('http://localhost:4000/api/users/signin', {
                   method: "POSt",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
                   body: JSON.stringify({
                     email: email,
                     password: password

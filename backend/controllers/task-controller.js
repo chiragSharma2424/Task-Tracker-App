@@ -78,4 +78,28 @@ const deleteTask = async (req, res) => {
     }
 }
 
-export { createTask, getTask, deleteTask };
+
+const updateTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description } = req.body;
+
+    const updatedTask = await taskModel.findByIdAndUpdate(
+      id,
+      { title, description },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      msg: "Task updated",
+      task: updatedTask,
+    });
+  } catch (err) {
+    console.log("error in update task route", err);
+    return res.status(500).json({
+      msg: "Internal server error",
+    });
+  }
+};
+
+export { createTask, getTask, deleteTask, updateTask };
