@@ -116,3 +116,35 @@ INSERT INTO employeeinfo VALUES
 (10, 'Bhumika', 'Joshi', 39000, 'HR', 22, TO_DATE('14-02-2023','DD-MM-YYYY'));
 
 COMMIT;
+
+
+
+
+
+-- SQL command for inserting data
+INSERT INTO employeesalary VALUES
+(101, 60000),
+(102, 45000),
+(103, 40000),
+(104, 55000),
+(105, 48000),
+(106, 52000),
+(107, 47000),
+(108, 65000),
+(109, 43000),
+(110, 60000);
+
+
+-- PL/SQL command for inserting data
+INSERT INTO employeesalary VALUES (101, 60000);
+INSERT INTO employeesalary VALUES (102, 45000);
+INSERT INTO employeesalary VALUES (103, 40000);
+INSERT INTO employeesalary VALUES (104, 55000);
+INSERT INTO employeesalary VALUES (105, 48000);
+INSERT INTO employeesalary VALUES (106, 52000);
+INSERT INTO employeesalary VALUES (107, 47000);
+INSERT INTO employeesalary VALUES (108, 65000);
+INSERT INTO employeesalary VALUES (109, 43000);
+INSERT INTO employeesalary VALUES (110, 60000);
+
+COMMIT;
