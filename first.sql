@@ -80,3 +80,39 @@ INSERT INTO Departments VALUES (10, 'IT');
 INSERT INTO Departments VALUES (20, 'Sales');
 INSERT INTO Departments VALUES (30, 'Marketing');
 INSERT INTO Departments VALUES (40, 'HR');
+
+
+
+
+
+-- inserting into another table INSERT INTO employeeinfo VALUES
+(1, 'Chirag', 'Sharma', 60000, 'IT', 21, TO_DATE('01-11-2025','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(2, 'Nikita', 'Dangi', 45000, 'Sales', 23, TO_DATE('15-03-2022','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(3, 'Chinnu', 'Sharma', 40000, 'IT', 24, TO_DATE('10-07-2021','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(4, 'Himank', 'Lohar', 55000, 'Marketing', 26, TO_DATE('20-01-2020','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(5, 'Kapil', 'Kalal', 48000, 'Sales', 27, TO_DATE('05-06-2019','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(6, 'Rohit', 'Verma', 52000, 'Marketing', 28, TO_DATE('18-09-2018','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(7, 'Prateek', 'Singh', 47000, 'IT', 25, TO_DATE('11-12-2020','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(8, 'Karan', 'Mehta', 65000, 'HR', 30, TO_DATE('01-04-2017','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(9, 'Richa', 'Shah', 43000, 'Sales', 24, TO_DATE('23-08-2021','DD-MM-YYYY'));
+
+INSERT INTO employeeinfo VALUES
+(10, 'Bhumika', 'Joshi', 39000, 'HR', 22, TO_DATE('14-02-2023','DD-MM-YYYY'));
+
+COMMIT;
