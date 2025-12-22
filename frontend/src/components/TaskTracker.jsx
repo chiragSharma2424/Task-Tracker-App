@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserMenu from "./UserMenu";
-import { updateTask } from "../../../backend/controllers/task-controller";
+
 
 export default function TaskTracker() {
   const [title, setTitle] = useState("");
@@ -44,17 +44,17 @@ const handleUpdate = (task) => {
       title: newTitle,
       description: newDescription,
     }),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      // ✅ UI update
+  }).then((resp) => {
+    resp.json()
+  }).then((data) => {
       setTasks((prevTasks) =>
         prevTasks.map((t) =>
           t._id === task._id ? data.task : t
         )
-      );
-    })
-    .catch((err) => console.log("update error", err));
+      )
+    }).catch((err) => {
+      console.log("update error", err)
+    });
 };
 
 
@@ -75,16 +75,13 @@ const handleUpdate = (task) => {
   return (
     <div className="min-h-screen bg-gray-100">
 
-      {/* 🔹 AppBar */}
       <div className="w-full bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
         <h1 className="text-xl font-bold">Task Tracker</h1>
         <UserMenu />
       </div>
 
-      {/* 🔹 Page Content */}
-      <div className="flex flex-col items-center py-10 px-4">
 
-        {/* Add Task */}
+      <div className="flex flex-col items-center py-10 px-4">
         <div className="bg-white shadow-xl rounded-2xl w-full max-w-2xl p-8 border border-gray-200">
           <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
             Add a Task
@@ -94,14 +91,18 @@ const handleUpdate = (task) => {
             <input
               type="text"
               placeholder="Enter title"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
               className="w-full px-4 py-3 rounded-lg bg-gray-50 border outline-none"
             />
 
             <textarea
               rows="3"
               placeholder="Enter description"
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => {
+                setDescription(e.target.value)
+              }}
               className="w-full px-4 py-3 rounded-lg bg-gray-50 border outline-none"
             />
 
@@ -158,7 +159,7 @@ const handleUpdate = (task) => {
                       handleDelete(task._id)
                     }}>Delete</button>
                     <button className="text-blue-600" onClick={() => {
-                      updateTask(task)
+                     handleUpdate(task._id);
                     }}>Update</button>
                   </div>
                 </div>
