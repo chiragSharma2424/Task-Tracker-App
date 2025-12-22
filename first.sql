@@ -72,3 +72,11 @@ INSERT INTO Employees VALUES
 
 INSERT INTO Employees VALUES
 (110, 'Bhumika', 'Joshi', 39000, 40, 108, TO_DATE('14-02-2023','DD-MM-YYYY'), 22, NULL);
+
+
+
+-- inserting into departments
+INSERT INTO Departments VALUES (10, 'IT');
+INSERT INTO Departments VALUES (20, 'Sales');
+INSERT INTO Departments VALUES (30, 'Marketing');
+INSERT INTO Departments VALUES (40, 'HR');
