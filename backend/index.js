@@ -18,17 +18,22 @@ app.use(cors({
 }))
 app.use(cookieParser());
 
+
 // Routes
 app.use('/api/users', userRouter);
 app.use('/api/task', taskRouter);
 app.use('/api/users', dashboardRouter)
 
+
+// universal route
 app.get('/', (req, res) => {
     res.status(200).json({
         msg: "home route"
     })
 });
 
+
+// universal route for POST request
 app.post('/', (req, res) => {
     var cars = [];
     const { carName, carCompany } = req.body;

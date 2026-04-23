@@ -18,11 +18,7 @@ const createTask = async (req, res) => {
 
         res.status(201).json({
             msg: "Task created",
-            task: {
-                title: title,
-                description: description,
-                id: task._id
-            }
+            task: task
         })
     } catch(err) {
         console.log(`error in create task controller ${err}`);

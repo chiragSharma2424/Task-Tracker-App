@@ -17,8 +17,7 @@ export default function TaskTracker() {
         throw new Error("Failed to delete task");
       }
       return resp.json();
-    })
-    .then(() => {
+    }).then(() => {
       setTasks((prevTasks) =>
         prevTasks.filter((task) => task._id !== taskId)
       );
@@ -59,18 +58,18 @@ const handleUpdate = (task) => {
 
 
 
-  const fetchTasks = () => {
-    fetch("http://localhost:4000/api/task/get", {
-      credentials: "include",
-    })
-      .then((resp) => resp.json())
-      .then((data) => setTasks(data.tasks || []))
-      .catch((err) => console.log(err));
-  };
-
+  
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    fetch("http://localhost:4000/api/task/get", {
+      credentials: "include"
+    }).then((resp) => {
+      return resp.json()
+    }).then((data) => {
+      setTasks(data.tasks || [])
+    }).catch((err) => {
+      console.log(`error in useEffect ${err}`)
+    })
+  }, [])
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -103,8 +102,7 @@ const handleUpdate = (task) => {
               onChange={(e) => {
                 setDescription(e.target.value)
               }}
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border outline-none"
-            />
+              className="w-full px-4 py-3 rounded-lg bg-gray-50 border outline-none"/>
 
             <button
               type="button"
@@ -121,10 +119,10 @@ const handleUpdate = (task) => {
                   }),
                 }).then((resp) => {
                   return resp.json();
-                }).then(() => {
+                }).then((data) => {
+                    setTasks((prevTasks) => [...prevTasks, data.task]);
                     setTitle("")
                     setDescription("")
-                    fetchTasks()
                   });
               }}
               className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700">

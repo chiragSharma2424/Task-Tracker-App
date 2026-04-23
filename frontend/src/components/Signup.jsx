@@ -79,6 +79,7 @@ export default function Signup() {
                 return resp.json()
               }).then((data) => {
                 console.log(data)
+                navigate('/task')
               }).catch((err) => {
                 console.log(`error in sending request ${err}`);
               })
